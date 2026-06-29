@@ -1,9 +1,19 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <script>
-      sessionStorage.redirect = location.href;
-    </script>
-    <meta http-equiv="refresh" content="0;URL='/sh-architect/'">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting | SH Architects</title>
   </head>
+  <body>
+    <script>
+      const repo = '/sh-architect'
+      const path = window.location.pathname
+      const route = path.startsWith(repo) ? path.slice(repo.length) || '/' : '/'
+      const query = window.location.search || ''
+      const hash = window.location.hash || ''
+
+      window.location.replace(`${repo}/?redirect=${encodeURIComponent(route + query + hash)}`)
+    </script>
+  </body>
 </html>
